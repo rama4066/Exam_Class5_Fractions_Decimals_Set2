@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 5 Maths Challenge | Fractions & Decimals</title>
+<style>
+:root{--ink:#172554;--muted:#64748b;--blue:#4f46e5;--purple:#9333ea;--green:#16a34a;--pink:#ec4899;--line:#e2e8f0}
+*{box-sizing:border-box}
+body{margin:0;padding:22px;font-family:"Segoe UI",Tahoma,sans-serif;color:var(--ink);background:linear-gradient(135deg,#e0f2fe 0%,#f5f3ff 48%,#fce7f3 100%);min-height:100vh}
+.container{max-width:1050px;margin:auto;background:#fff;border-radius:22px;padding:28px;box-shadow:0 18px 55px #312e811c}
+.hero{padding:24px;border-radius:18px;color:#fff;background:linear-gradient(115deg,#4338ca,#7c3aed 58%,#db2777);margin-bottom:22px}
+.hero h1{margin:0 0 8px;font-size:clamp(23px,4vw,32px)}
+.hero p{margin:5px 0;color:#f5f3ff}
+.pills{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+.pill{background:#ffffff24;border:1px solid #ffffff55;padding:7px 12px;border-radius:30px;font-size:13px;font-weight:700}
+.hidden{display:none!important}
+.start-card{background:linear-gradient(135deg,#f8fafc,#eef2ff);border:1px solid #dbeafe;border-radius:16px;padding:22px}
+input[type=text]{width:min(100%,360px);padding:13px 14px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px;margin:8px 8px 8px 0}
+button{font:inherit}
+.nav{border:0;border-radius:10px;padding:11px 17px;font-weight:700;cursor:pointer;transition:.18s}
+.nav:hover,.p-btn:hover{transform:translateY(-1px);filter:brightness(.97)}
+.primary{background:linear-gradient(110deg,#4f46e5,#7c3aed);color:white}
+.secondary{background:#e2e8f0;color:#334155}
+.success{background:linear-gradient(110deg,#059669,#22c55e);color:white}
+.header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:13px 16px;background:#f8fafc;border:1px solid var(--line);border-radius:13px;margin-bottom:20px}
+.timer{font-size:21px;font-weight:800;color:#be123c;background:#fff1f2;border:1px solid #fecdd3;padding:8px 15px;border-radius:10px;font-variant-numeric:tabular-nums}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:22px}
+.question-box{min-width:0}
+.q-card{padding:20px;border:1px solid #e0e7ff;border-radius:17px;background:linear-gradient(145deg,#fff,#f8faff);min-height:330px}
+.q-number{display:inline-block;background:#ede9fe;color:#6d28d9;border-radius:30px;padding:6px 12px;font-size:13px;font-weight:800;margin-bottom:10px}
+#q-title{font-size:19px;line-height:1.9;margin:2px 0 15px;color:#1e293b}
+.visual-box{padding:14px;margin:12px 0 17px;border-radius:13px;background:linear-gradient(120deg,#eff6ff,#fdf2f8);border:1px dashed #c4b5fd;text-align:center;color:#4338ca;font-weight:700}
+.visual-box .big{font-size:clamp(19px,3vw,26px);letter-spacing:.5px}
+.visual-box .small{font-size:13px;color:#64748b;font-weight:600;margin-top:5px}
+.option{display:flex;align-items:flex-start;gap:11px;margin:10px 0;padding:13px 14px;border:1px solid #dbe3f0;border-radius:11px;cursor:pointer;background:#fff;transition:.15s;line-height:1.4}
+.option:hover{border-color:#818cf8;background:#f5f3ff}
+.option:has(input:checked){border:2px solid #6366f1;background:#eef2ff;padding:12px 13px}
+.option input{margin-top:3px;accent-color:#4f46e5;transform:scale(1.15)}
+.controls{display:flex;justify-content:space-between;gap:9px;flex-wrap:wrap;margin-top:18px}
+.palette{border:1px solid var(--line);border-radius:15px;padding:16px;background:#fbfdff;align-self:start}
+.palette-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:13px}
+.p-btn{padding:10px 4px;border:1px solid #cbd5e1;background:#fff;border-radius:8px;cursor:pointer;font-weight:800;color:#475569}
+.p-btn.answered{background:#16a34a;color:white;border-color:#16a34a}
+.p-btn.active{outline:3px solid #c7d2fe;border-color:#4f46e5}
+.legend{font-size:12px;color:#64748b;line-height:1.8;margin-top:14px}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+#save-status{padding:13px;border-radius:10px;margin:15px 0;font-weight:700}
+.saving{background:#fef3c7;color:#92400e}.saved{background:#dcfce7;color:#166534}
+.review-item{padding:13px 4px;border-bottom:1px solid #e5e7eb;line-height:1.5}
+
+.result-score{font-size:25px;font-weight:900;color:#4f46e5}
+#progress-wrap{height:8px;background:#e2e8f0;border-radius:99px;overflow:hidden;margin:-7px 0 18px}
+#progress-fill{height:100%;width:4%;background:linear-gradient(90deg,#4f46e5,#ec4899);transition:width .25s}
+.math-line{display:flex;align-items:center;flex-wrap:wrap;gap:9px;font-size:clamp(20px,3.5vw,27px);font-weight:750;color:#312e81}
+.frac{display:inline-flex;flex-direction:column;align-items:stretch;vertical-align:middle;text-align:center;line-height:1.05;margin:0 2px;min-width:1.05em;font-size:.92em}
+.frac .num{padding:0 3px 3px;border-bottom:2px solid currentColor}
+.frac .den{padding:3px 3px 0}
+.mixed{display:inline-flex;align-items:center;gap:2px;white-space:nowrap}
+.math-inline{display:inline-flex;align-items:center;gap:2px;vertical-align:middle}
+.visual-box{min-height:95px}
+.visual-box .big{letter-spacing:0}
+.visual-model{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin:12px auto 3px}
+.model-card{background:#ffffffc9;border:1px solid #dbeafe;border-radius:12px;padding:9px 12px;min-width:110px}
+.model-label{font-size:11px;color:#64748b;font-weight:700;margin-bottom:7px}
+.bar-model{display:flex;gap:2px;height:18px;margin:0 auto;width:120px}
+.bar-model span{flex:1;border:1px solid #a5b4fc;border-radius:3px;background:#eef2ff}
+.bar-model span.fill{background:linear-gradient(135deg,#818cf8,#c084fc);border-color:#818cf8}
+.circle-model{width:54px;height:54px;border-radius:50%;border:3px solid #818cf8;background:conic-gradient(#a78bfa 0 40%,#f1f5f9 40% 100%);margin:auto}
+.option .frac{font-size:1em}
+.review-item .frac{font-size:1em}
+@media(max-width:520px){.math-line{gap:6px}.visual-model{gap:8px}.model-card{min-width:95px;padding:8px}}
+
+@media(max-width:760px){body{padding:10px}.container{padding:15px;border-radius:16px}.main{grid-template-columns:1fr}.palette{order:2}.palette-grid{grid-template-columns:repeat(5,1fr)}.q-card{padding:15px}.controls .nav{flex:1}.header{align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1>🌈 Class 5 Mathematics Challenge</h1>
+    <p>Fractions & Decimals · Medium to Complex Level</p>
+    <div class="pills"><span class="pill">⏱ 60 Minutes</span><span class="pill">📝 25 Questions</span><span class="pill">⭐ 25 Marks</span></div>
+  </div>
+
+  <div id="start-screen" class="start-card">
+    <h2>🚀 Ready to begin?</h2>
+    <p>Read each question carefully. Select one answer and use the question palette to move between questions.</p>
+    <p><strong>Topics:</strong> Fraction operations, mixed numbers, decimal operations, place value and real-life applications.</p>
+    <p><strong>Important:</strong> Switching browser tabs during the test will trigger a warning.</p>
+    <input type="text" id="student-name" placeholder="Enter Student Full Name" required>
+    <button class="nav primary" onclick="startExam()">Start Exam →</button>
+  </div>
+
+  <div id="exam-screen" class="hidden">
+    <div class="header">
+      <div><strong>Student:</strong> <span id="display-name"></span><br><strong>Tab Warnings:</strong> <span id="warnings" style="color:#be123c;font-weight:800">0</span></div>
+      <div class="timer" id="timer">60:00</div>
+    </div>
+    <div id="progress-wrap"><div id="progress-fill"></div></div>\n    <div class="main">
+      <div class="question-box">
+        <div class="q-card">
+          <span class="q-number" id="q-number">QUESTION 1 OF 25</span>
+          <h3 id="q-title"></h3>
+          <div class="visual-box" id="visual-box"></div>
+          <div id="options-box"></div>
+        </div>
+        <div class="controls">
+          <button class="nav secondary" onclick="prevQ()">← Previous</button>
+          <button class="nav primary" onclick="nextQ()">Save & Next →</button>
+          <button class="nav success" onclick="submitExam()">Submit Exam</button>
+        </div>
+      </div>
+      <aside class="palette">
+        <strong>🧭 Question Palette</strong>
+        <div class="palette-grid" id="palette-grid"></div>
+        <div class="legend"><div><span class="dot" style="background:#16a34a"></span>Answered</div><div><span class="dot" style="background:#fff;border:1px solid #94a3b8"></span>Not answered</div><div><span class="dot" style="background:#6366f1"></span>Current question</div></div>
+      </aside>
+    </div>
+  </div>
+
+  <div id="result-screen" class="hidden">
+    <h2>🎉 Assessment Completed!</h2>
+    <div id="save-status" class="saving">Saving results to teacher's sheet...</div>
+    <p><strong>Student Name:</strong> <span id="res-name"></span></p>
+    <p><strong>Score:</strong> <span class="result-score" id="res-score"></span></p>
+    <p><strong>Tab Switches Detected:</strong> <span id="res-warnings"></span></p>
+    <div id="review-box"></div>
+  </div>
+</div>
+
+<script>
+  // Keep the existing Google Apps Script URL and result-posting structure unchanged.
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzDkbaGgHKmvMrwaE1juPKrWycMQbl5jX7w0TIN3f4zh69kFwOPlpjvA-Abp_o8iBa-/exec";
+
+  // NEW CLASS 5 FRACTIONS & DECIMALS QUESTION SET
+  const questions = [
+    {q:"1. Find the value of 2 3/5 + 1 7/10 − 3/4.",options:["3 1/2","3 11/20","3 3/5","4 1/20"],answer:1,visual:"2 3/5  +  1 7/10  −  3/4",hint:"Convert the fractions to a common denominator before adding and subtracting."},
+    {q:"2. Subtract 2 3/8 from 7 5/12. What is the answer in simplest form?",options:["5 1/24","5 5/24","4 23/24","5 7/24"],answer:0,visual:"7 5/12  −  2 3/8",hint:"The LCM of 12 and 8 is 24."},
+    {q:"3. Find 4/9 of 81 and add 3/5 of 50.",options:["56","60","66","72"],answer:2,visual:"(4/9 × 81)  +  (3/5 × 50)",hint:"Find each fraction of its number separately, then add."},
+    {q:"4. What is the sum of 6.075, 18.9 and 0.806?",options:["25.681","25.781","24.781","26.781"],answer:1,visual:"6.075  +  18.900  +  0.806",hint:"Line up the decimal points and add zeros where needed."},
+    {q:"5. Evaluate: 50 − (12.75 + 8.6).",options:["28.55","29.65","28.65","27.65"],answer:2,visual:"50.00  −  (12.75 + 8.60)",hint:"Solve inside the brackets first."},
+    {q:"6. A notebook costs ₹3.20. What is the cost of 2.75 such notebooks?",options:["₹8.40","₹8.60","₹8.80","₹9.20"],answer:2,visual:"₹3.20  ×  2.75",hint:"Multiply as whole numbers first, then place the decimal point."},
+    {q:"7. Calculate 14.4 ÷ 0.6.",options:["2.4","24","240","0.24"],answer:1,visual:"14.4  ÷  0.6",hint:"Multiply both numbers by 10 to make the divisor a whole number."},
+    {q:"8. What is 0.045 × 1,000?",options:["0.45","4.5","45","450"],answer:2,visual:"0.045  ×  1,000",hint:"Multiplying by 1,000 moves the decimal point three places to the right."},
+    {q:"9. Find the quotient: 8.4 ÷ 0.07.",options:["12","120","1,200","0.12"],answer:1,visual:"8.4  ÷  0.07",hint:"Multiply both numbers by 100 before dividing."},
+    {q:"10. Which decimal is equivalent to 5/8?",options:["0.58","0.625","0.825","0.65"],answer:1,visual:"5 ÷ 8 = ?",hint:"Convert the fraction to a decimal by division."},
+    {q:"11. Riya buys 2.4 kg of rice at ₹87.50 per kg. How much does she pay?",options:["₹200","₹205","₹210","₹215"],answer:2,visual:"2.4 kg  ×  ₹87.50 per kg",hint:"Total cost = quantity × price per kilogram."},
+    {q:"12. A ribbon is 12.5 m long. Meera cuts off 1.75 m and then 2.6 m. How much ribbon remains?",options:["8.05 m","8.15 m","8.25 m","8.35 m"],answer:1,visual:"12.50 m  −  1.75 m  −  2.60 m",hint:"Add the two cut lengths first, then subtract from the total."},
+    {q:"13. Find 3/4 of 2/5 of 200.",options:["50","55","60","75"],answer:2,visual:"3/4  ×  2/5  ×  200",hint:"Find 2/5 of 200 first, then take 3/4 of the result."},
+    {q:"14. Simplify: 2 1/3 ÷ 7/9.",options:["2","2 1/2","3","3 1/3"],answer:2,visual:"2 1/3  ÷  7/9",hint:"Convert the mixed number to an improper fraction and multiply by the reciprocal."},
+    {q:"15. Which is the greatest fraction?",options:["5/8","7/12","3/5","11/20"],answer:0,visual:"Compare: 5/8   ·   7/12   ·   3/5   ·   11/20",hint:"Convert each fraction to a decimal or use a common denominator."},
+    {q:"16. Arrange these decimals in ascending order: 0.9, 0.09, 0.99, 0.909.",options:["0.09, 0.9, 0.909, 0.99","0.09, 0.909, 0.9, 0.99","0.9, 0.09, 0.99, 0.909","0.99, 0.909, 0.9, 0.09"],answer:0,visual:"0.900   ·   0.090   ·   0.990   ·   0.909",hint:"Write all numbers with three decimal places to compare them easily."},
+    {q:"17. In the number 32.064, what is the place value of the digit 6?",options:["6 tenths","6 hundredths","6 thousandths","6 units"],answer:1,visual:"3  2  .  0  6  4",hint:"The first digit after the decimal is tenths; the second is hundredths."},
+    {q:"18. Calculate 15.6 ÷ 0.12.",options:["13","1.3","130","1,300"],answer:2,visual:"15.6  ÷  0.12",hint:"Multiply both numbers by 100 to make the divisor a whole number."},
+    {q:"19. Evaluate: 7 1/2 − (2 2/3 + 1 5/6).",options:["2 1/2","3","3 1/2","4"],answer:1,visual:"7 1/2  −  (2 2/3 + 1 5/6)",hint:"Add the mixed numbers inside the brackets first."},
+    {q:"20. Find the product of 0.8 and 0.25.",options:["0.02","0.2","2","0.002"],answer:1,visual:"0.8  ×  0.25",hint:"Remember that 0.25 is one-quarter."},
+    {q:"21. Add 5/6 and 7/12. Give your answer as a mixed number.",options:["1 1/12","1 1/4","1 5/12","1 7/12"],answer:2,visual:"5/6  +  7/12",hint:"Convert 5/6 into twelfths before adding."},
+    {q:"22. A shop has 18 litres of juice. It fills bottles that each hold 3/4 litre. How many full bottles can be filled?",options:["18","21","24","27"],answer:2,visual:"18 litres  ÷  3/4 litre per bottle",hint:"Divide the total quantity by the capacity of one bottle."},
+    {q:"23. How much must be added to 3.75 to make 10?",options:["6.15","6.25","6.35","7.25"],answer:1,visual:"3.75  +  ?  =  10.00",hint:"Find the difference between 10 and 3.75."},
+    {q:"24. A movie lasts 2.5 hours. How many minutes is this?",options:["120 minutes","125 minutes","150 minutes","180 minutes"],answer:2,visual:"2.5 hours  ×  60 minutes",hint:"One hour contains 60 minutes."},
+    {q:"25. A shopkeeper has ₹125.50. He spends ₹18.75 each day for 4 days. How much money is left?",options:["₹45.50","₹50.50","₹51.50","₹55.50"],answer:1,visual:"₹125.50  −  (₹18.75 × 4)",hint:"Calculate the total spending first, then subtract it from the amount."}
+  ];
+
+  let current=0,answers=new Array(questions.length).fill(null),timeLeft=3600,timerId,warnings=0,active=false;
+  document.getElementById("total-q-count")?.remove();
+
+
+  // Render textbook fractions: numerator above denominator with a clear fraction bar.
+  function renderMath(value){
+    let s=String(value);
+    // Mixed numbers first (for example 2 3/5), then ordinary fractions.
+    s=s.replace(/(\d+)\s+(\d+)\/(\d+)/g,
+      '<span class="mixed"><span>$1</span><span class="frac"><span class="num">$2</span><span class="den">$3</span></span></span>');
+    s=s.replace(/(\d+)\/(\d+)/g,
+      '<span class="frac"><span class="num">$1</span><span class="den">$2</span></span>');
+    return s;
+  }
+
+  // A light-touch visual aid: fraction bars and a small circle model for fraction questions.
+  function makeVisualModel(value){
+    const matches=[...String(value).matchAll(/(?<![\d.])(\d+)\/(\d+)(?![\d.])/g)];
+    if(!matches.length)return "";
+    const first=matches[0], numerator=Math.min(Number(first[1]),12), denominator=Math.min(Number(first[2]),12);
+    if(!denominator || denominator<2)return "";
+    const cells=Array.from({length:denominator},(_,i)=>`<span class="${i<numerator?'fill':''}"></span>`).join("");
+    const percent=Math.min(100,numerator/denominator*100);
+    return `<div class="visual-model">
+      <div class="model-card"><div class="model-label">FRACTION BAR</div><div class="bar-model">${cells}</div></div>
+      <div class="model-card"><div class="model-label">PART OF A WHOLE</div><div class="circle-model" style="background:conic-gradient(#a78bfa 0 ${percent}%,#f1f5f9 ${percent}% 100%)"></div></div>
+    </div>`;
+  }
+
+  function startExam(){
+    const name=document.getElementById("student-name").value.trim();
+    if(!name){alert("Please enter your name.");return;}
+    document.getElementById("display-name").innerText=name;
+    document.getElementById("start-screen").classList.add("hidden");
+    document.getElementById("exam-screen").classList.remove("hidden");
+    active=true;renderPalette();loadQuestion(0);
+    timerId=setInterval(()=>{
+      timeLeft--;
+      const m=Math.floor(timeLeft/60),s=timeLeft%60;
+      document.getElementById("timer").innerText=`${m}:${s<10?"0":""}${s}`;
+      if(timeLeft<=0)submitExam();
+    },1000);
+  }
+  function loadQuestion(idx){
+    current=idx;
+    const q=questions[idx];
+    document.getElementById("q-number").innerText=`QUESTION ${idx+1} OF ${questions.length}`;
+    document.getElementById("q-title").innerHTML=renderMath(q.q);
+    document.getElementById("visual-box").innerHTML=`<div class="big">${renderMath(q.visual)}</div>${makeVisualModel(q.visual)}<div class="small">💡 ${q.hint}</div>`;
+    const box=document.getElementById("options-box");box.innerHTML="";
+    q.options.forEach((opt,i)=>{
+      const label=document.createElement("label");label.className="option";
+      const radio=document.createElement("input");radio.type="radio";radio.name="opt";radio.checked=answers[idx]===i;
+      radio.addEventListener("change",()=>selectOpt(i));
+      const span=document.createElement("span");span.innerHTML=String.fromCharCode(65+i)+". "+renderMath(opt);
+      label.append(radio,span);box.appendChild(label);
+    });
+    renderPalette();
+  }
+  function selectOpt(i){answers[current]=i;renderPalette();}
+  function nextQ(){if(current<questions.length-1)loadQuestion(current+1);}
+  function prevQ(){if(current>0)loadQuestion(current-1);}
+  function renderPalette(){
+    const grid=document.getElementById("palette-grid");grid.innerHTML="";
+    questions.forEach((_,i)=>{
+      const b=document.createElement("button");b.className="p-btn"+(answers[i]!==null?" answered":"")+(i===current?" active":"");
+      b.textContent=i+1;b.type="button";b.addEventListener("click",()=>loadQuestion(i));grid.appendChild(b);
+    });
+  }
+  document.addEventListener("visibilitychange",()=>{
+    if(document.hidden&&active){warnings++;document.getElementById("warnings").innerText=warnings;alert("Warning: Switching tabs is not allowed during the exam!");}
+  });
+  function submitExam(){
+    if(!active)return;
+    const unanswered=answers.filter(a=>a===null).length;
+    if(unanswered>0&&timeLeft>0&&!confirm(`You have ${unanswered} unanswered question(s). Do you still want to submit?`))return;
+    active=false;clearInterval(timerId);
+    const studentName=document.getElementById("student-name").value.trim();
+    let score=0,selectedList=[],reviewHTML="<h3>📋 Answer Review</h3>";
+    questions.forEach((q,i)=>{
+      const correct=answers[i]===q.answer;if(correct)score++;
+      const chosenText=answers[i]!==null?q.options[answers[i]]:"Unanswered";
+      selectedList.push(`Q${i+1}: ${chosenText}`);
+      reviewHTML+=`<div class="review-item"><strong>${renderMath(q.q)}</strong><br>Your Answer: <span style="color:${correct?"#16a34a":"#dc2626"};font-weight:700">${renderMath(chosenText)}</span> &nbsp;|&nbsp; Correct Answer: <strong>${renderMath(q.options[q.answer])}</strong></div>`;
+    });
+    document.getElementById("exam-screen").classList.add("hidden");
+    document.getElementById("result-screen").classList.remove("hidden");
+    document.getElementById("res-name").innerText=studentName;
+    document.getElementById("res-score").innerText=`${score} / ${questions.length}`;
+    document.getElementById("res-warnings").innerText=warnings;
+    document.getElementById("review-box").innerHTML=reviewHTML;
+
+    // Send data to Google Sheets — same URL, method, mode, headers and payload fields as before.
+    fetch(GOOGLE_SCRIPT_URL,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        studentName:studentName,
+        score:score,
+        totalQuestions:questions.length,
+        warnings:warnings,
+        answers:selectedList.join(" | ")
+      })
+    }).then(()=>{
+      const statusBox=document.getElementById("save-status");
+      statusBox.className="saved";
+      statusBox.innerText="Results saved successfully to teacher's sheet!";
+    }).catch(()=>{
+      document.getElementById("save-status").innerText="Saved locally. Please take a screenshot of your score.";
+    });
+  }
+</script>
+</body>
+</html>
